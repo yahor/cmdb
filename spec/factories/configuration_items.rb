@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :configuration_item do
-    type { "" }
-    status { "MyString" }
-    environment { "MyString" }
+    sequence(:name) { |n| "name - #{n}" }
+    type { "Application" }
+    status { "Active" }
+    environment { "Staging" }
   end
 end
