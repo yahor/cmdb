@@ -14,5 +14,14 @@ unless User.where(email: 'admin@example.com').exists?
   User.create!(email: 'admin@example.com', password: '111111', admin: true)
 end
 unless User.where(email: 'user@example.com').exists?
-  User.create!(email: 'user@example.com', password: '111111', admin: true)
+  User.create!(email: 'user@example.com', password: '111111', admin: false)
+end
+
+# Create CIs
+
+1.upto(10) do |i|
+  Server.find_or_create_by!(name: "Win NT - #{i}", status: ConfigurationItem::STATUSES.sample, environment: ConfigurationItem::ENVIRONMENTS.sample)
+  Application.find_or_create_by!(name: "Microservice - #{i}", status: ConfigurationItem::STATUSES.sample, environment: ConfigurationItem::ENVIRONMENTS.sample)
+  Application.find_or_create_by!(name: "Web Site - #{i}", status: ConfigurationItem::STATUSES.sample, environment: ConfigurationItem::ENVIRONMENTS.sample)
+  Database.find_or_create_by!(name: "Postgres DB - #{i}", status: ConfigurationItem::STATUSES.sample, environment: ConfigurationItem::ENVIRONMENTS.sample)
 end

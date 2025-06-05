@@ -32,6 +32,7 @@ class Ability
     alias_action :create, :read, :update, :destroy, to: :crud
 
     if user.present?
+      can :read, ConfigurationItem
 
       if user.admin?
         can :manage, :all

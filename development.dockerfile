@@ -1,4 +1,4 @@
-FROM ruby:3.3.7
+FROM ruby:3.3.8
 
 # Install system dependencies
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs yarn

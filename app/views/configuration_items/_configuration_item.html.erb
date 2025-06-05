@@ -1,0 +1,20 @@
+<td class="border border-gray-300 p-4 text-gray-500 dark:border-gray-700 dark:text-gray-400">
+  <%= configuration_item.name %>
+</td>
+<td class="border border-gray-300 p-4 text-gray-500 dark:border-gray-700 dark:text-gray-400">
+  <%= configuration_item.class.name %>
+</td>
+<td class="border border-gray-300 p-4 text-gray-500 dark:border-gray-700 dark:text-gray-400">
+  <%= configuration_item.status %>
+</td>
+<td class="border border-gray-300 p-4 text-gray-500 dark:border-gray-700 dark:text-gray-400">
+  <div>
+    <% configuration_item.relationships.each do |relation| %>
+      <%= "It #{relation.using_type} #{relation.connected_item.name}" %><br/>
+    <% end %>
+  </div>
+</td>
+<td class="border border-gray-300 p-4 text-gray-500 dark:border-gray-700 dark:text-gray-400">
+  <%= link_to '✎', edit_configuration_item_path(configuration_item), title: 'Edit' %> |
+  <%= link_to "🗑", configuration_item_path(configuration_item), title: 'Remove', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}  %>
+</td>

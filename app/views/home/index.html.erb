@@ -1,8 +1,18 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="p-10 relative">
+  <h1 class="text-lg font-bold">Dashboard</h1>
+  <p>You are logged in as <%= current_user.email %>(<%= current_user.admin? ? 'Admin' : 'Viewer' %>)</p>
+  <br>
+  <div>
+    <ul>
+      <li>
+        Total CIs: <%= @total_count %></li>
+      <li>Count by type: <%= @number_by_type.present? ? @number_by_type.collect{|k,v| "#{k} - #{v}"}.join(' | ') : '0' %></li>
+      <li>Count by status: <%= @number_by_status.present? ? @number_by_status.collect{|k,v| "#{k} - #{v}"}.join(' | ') : '0' %></li>
+    </ul>
 
 
+    <p><%= link_to 'Configuration Items', configuration_items_path, class: "inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm rounded-lg text-gray-700 bg-sky-500 hover:bg-gray-100 transition" %></p>
 
-
-<p>You are logged in as <%= current_user.email %>(<%= current_user.admin? ? 'Admin' : 'Viewer' %>)</p>
-<%= link_to 'Log Out', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}  %>
+    <%= link_to 'Log Out', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm rounded-lg text-gray-700 bg-sky-500 hover:bg-gray-100 transition"  %>
+  </div>
+</div>

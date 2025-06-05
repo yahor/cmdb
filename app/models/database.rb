@@ -1,0 +1,2 @@
+class Database < ConfigurationItem
+end

@@ -1,0 +1,2 @@
+class Server < ConfigurationItem
+end
