@@ -18,10 +18,19 @@ unless User.where(email: 'user@example.com').exists?
 end
 
 # Create CIs
-
 1.upto(10) do |i|
   Server.find_or_create_by!(name: "Win NT - #{i}", status: ConfigurationItem::STATUSES.sample, environment: ConfigurationItem::ENVIRONMENTS.sample)
   Application.find_or_create_by!(name: "Microservice - #{i}", status: ConfigurationItem::STATUSES.sample, environment: ConfigurationItem::ENVIRONMENTS.sample)
   Application.find_or_create_by!(name: "Web Site - #{i}", status: ConfigurationItem::STATUSES.sample, environment: ConfigurationItem::ENVIRONMENTS.sample)
   Database.find_or_create_by!(name: "Postgres DB - #{i}", status: ConfigurationItem::STATUSES.sample, environment: ConfigurationItem::ENVIRONMENTS.sample)
+end
+
+# Create Relations
+ConfigurationItem.all.find_each do |ci|
+  1.upto(rand(4)) do
+    ci.relationships.find_or_create_by(
+      connected_item: ConfigurationItem.where.not(id: ci.id).all.sample,
+      using_type: Relationship::USING_TYPES.sample
+    )
+  end
 end
