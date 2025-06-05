@@ -3,15 +3,18 @@ require 'rails_helper'
 RSpec.describe "configuration_items/index", type: :view do
   before(:each) do
     assign(:configuration_items, [
-      ConfigurationItem.create!(
+      Server.create!(
         name: "Name",
-        type: "Server",
         status: "Active",
         environment: "Production"
       ),
-      ConfigurationItem.create!(
-        name: "Name",
-        type: "Server",
+      Application.create!(
+        name: "Name2",
+        status: "Active",
+        environment: "Production"
+      ),
+      Database.create!(
+        name: "Name3",
         status: "Active",
         environment: "Production"
       )
@@ -20,10 +23,13 @@ RSpec.describe "configuration_items/index", type: :view do
 
   it "renders a list of configuration_items" do
     render
-    cell_selector = 'div>p'
-    assert_select cell_selector, text: Regexp.new("Name".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Type".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Status".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Environment".to_s), count: 2
+    cell_selector = '#configuration_items > table > tbody > tr > td'
+
+    assert_select cell_selector, text: Regexp.new("Name".to_s), count: 3
+    assert_select cell_selector, text: Regexp.new("Server".to_s), count: 1
+    assert_select cell_selector, text: Regexp.new("Application".to_s), count: 1
+    assert_select cell_selector, text: Regexp.new("Database".to_s), count: 1
+    assert_select cell_selector, text: Regexp.new("Active".to_s), count: 3
+    assert_select cell_selector, text: Regexp.new("Production".to_s), count: 3
   end
 end

@@ -16,11 +16,11 @@ RSpec.describe "configuration_items/new", type: :view do
     assert_select "form[action=?][method=?]", configuration_items_path, "post" do
       assert_select "input[name=?]", "configuration_item[name]"
 
-      assert_select "input[name=?]", "configuration_item[type]"
+      assert_select "select[name=?]", "configuration_item[type]"
 
-      assert_select "input[name=?]", "configuration_item[status]"
+      assert_select "select[name=?]", "configuration_item[status]"
 
-      assert_select "input[name=?]", "configuration_item[environment]"
+      assert_select "select[name=?]", "configuration_item[environment]"
     end
   end
 end

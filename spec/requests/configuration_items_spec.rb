@@ -24,6 +24,10 @@ RSpec.describe "/configuration_items", type: :request do
     skip("Add a hash of attributes invalid for your model")
   }
 
+  let(:admin_user) { FactoryBot.create(:admin_user) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:ci) { FactoryBot.create(:configuration_item) }
+
   describe "GET /index" do
     it "renders a successful response" do
       ConfigurationItem.create! valid_attributes
@@ -42,6 +46,8 @@ RSpec.describe "/configuration_items", type: :request do
 
   describe "GET /new" do
     it "renders a successful response" do
+      sign_in admin_user
+
       get new_configuration_item_url
       expect(response).to be_successful
     end

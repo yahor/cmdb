@@ -20,11 +20,11 @@ RSpec.describe "configuration_items/edit", type: :view do
     assert_select "form[action=?][method=?]", configuration_item_path(configuration_item), "post" do
       assert_select "input[name=?]", "configuration_item[name]"
 
-      assert_select "input[name=?]", "configuration_item[type]"
+      assert_select "select[name=?]", "configuration_item[type]"
 
-      assert_select "input[name=?]", "configuration_item[status]"
+      assert_select "select[name=?]", "configuration_item[status]"
 
-      assert_select "input[name=?]", "configuration_item[environment]"
+      assert_select "select[name=?]", "configuration_item[environment]"
     end
   end
 end
