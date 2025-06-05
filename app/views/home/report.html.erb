@@ -1,0 +1,22 @@
+<div class="p-10 relative">
+  <h1 class="text-lg font-bold">Report</h1>
+
+  <%= form_with url: report_path, method: :get do |f| %>
+  <%= f.label :type %>
+  <%= f.select :type, ConfigurationItem::TYPES, selected: params[:type], include_blank: true %>
+  <%= f.label :status %>
+  <%= f.select :status, ConfigurationItem::STATUSES, selected: params[:status], include_blank: true %>
+  <%= f.label :environment %>
+  <%= f.select :environment, ConfigurationItem::ENVIRONMENTS, selected: params[:environment], include_blank: true %>
+
+  <%= f.submit "Submit", disable_with: 'Submiting...', class: "inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm rounded-lg text-gray-700 bg-gray-50 hover:bg-gray-100 transition" %>
+  <% end %>
+  <%= form_with url: report_path, method: :get do |f| %>
+  <%= f.submit 'Reset', class: "inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm rounded-lg text-gray-700 bg-gray-50 hover:bg-gray-100 transition" %>
+  <% end %>
+  <%= render partial: 'configuration_items/configuration_items', locals: { configuration_items: @configuration_items } %>
+</div>
+
+<div>
+  <%= link_to "<< Dashboard", root_path %>
+</div>

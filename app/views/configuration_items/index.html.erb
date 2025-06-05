@@ -4,36 +4,12 @@
 
 <h1>Configuration items</h1>
 <% if can? :create, ConfigurationItem %>
-  <%= link_to "New configuration item", new_configuration_item_path, class: 'inline-flex items-center px-3 py-2 border border-sky-500 text-sky-500 rounded-lg hover:bg-sky-50 hover:text-sky-700 transition' %>
+<%= link_to "New configuration item", new_configuration_item_path, class: 'inline-flex items-center px-3 py-2 border border-sky-500 text-sky-500 rounded-lg hover:bg-sky-50 hover:text-sky-700 transition' %>
 <% end %>
 
-<div id="configuration_items">
-  <div class="relative dark:text-gray-200" id="configuration_items">
-    <table id="sortableTable" class="table-auto border-collapse border border-gray-400 bg-white text-sm dark:border-gray-500 dark:bg-gray-800 bg-gray-50">
-      <thead class="bg-gray-50 dark:bg-gray-700">
-        <tr>
-          <th class="border border-gray-300 p-4 text-left font-semibold text-gray-900 dark:border-gray-600 dark:text-gray-200" data-type="string">
-            Name
-          </th>
-          <th class="border border-gray-300 p-4 text-left font-semibold text-gray-900 dark:border-gray-600 dark:text-gray-200" data-type="string">
-            Type
-          </th>
-          <th class="border border-gray-300 p-4 text-left font-semibold text-gray-900 dark:border-gray-600 dark:text-gray-200" data-type="string">
-            Status
-          </th>
-          <th class="border border-gray-300 p-4 text-left font-semibold text-gray-900 dark:border-gray-600 dark:text-gray-200" data-type="number">
-            Relations
-          </th>
-          <th class="border border-gray-300 p-4 text-left font-semibold text-gray-900 dark:border-gray-600 dark:text-gray-200">
-          <th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @configuration_items.each do |configuration_item| %>
-        <tr>
-          <%= render partial: 'configuration_item', locals: { configuration_item: configuration_item } %>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+<%= render partial: 'configuration_items/configuration_items', locals: { configuration_items: @configuration_items } %>
+
+
+<div>
+  <%= link_to "<< Dashboard", root_path %>
+</div>

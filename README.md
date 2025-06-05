@@ -31,8 +31,9 @@ Things you may want to cover:
 docker-compose build
 docker-compose up
 
-# In another terminal, create the database
+# In another terminal, create the database,
 docker-compose run web rake db:create db:migrate
+# To seed DB
 docker-compose run web rake db:seed
 
 use http://localhost:3000/ in browser to open site.

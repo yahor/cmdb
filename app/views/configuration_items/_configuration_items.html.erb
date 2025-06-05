@@ -1,0 +1,33 @@
+<div id="configuration_items">
+  <div class="relative dark:text-gray-200" id="configuration_items">
+    <table id="sortableTable" class="table-auto border-collapse border border-gray-400 bg-white text-sm dark:border-gray-500 dark:bg-gray-800 bg-gray-50">
+      <thead class="bg-gray-50 dark:bg-gray-700">
+        <tr>
+          <th class="border border-gray-300 p-4 text-left font-semibold text-gray-900 dark:border-gray-600 dark:text-gray-200" data-type="string">
+            Name
+          </th>
+          <th class="border border-gray-300 p-4 text-left font-semibold text-gray-900 dark:border-gray-600 dark:text-gray-200" data-type="string">
+            Type
+          </th>
+          <th class="border border-gray-300 p-4 text-left font-semibold text-gray-900 dark:border-gray-600 dark:text-gray-200" data-type="string">
+            Status
+          </th>
+          <th class="border border-gray-300 p-4 text-left font-semibold text-gray-900 dark:border-gray-600 dark:text-gray-200" data-type="string">
+            Environment
+          </th>
+          <th class="border border-gray-300 p-4 text-left font-semibold text-gray-900 dark:border-gray-600 dark:text-gray-200" data-type="number">
+            Relations
+          </th>
+          <th class="border border-gray-300 p-4 text-left font-semibold text-gray-900 dark:border-gray-600 dark:text-gray-200">
+          <th>
+        </tr>
+      </thead>
+      <tbody>
+        <% configuration_items.each do |configuration_item| %>
+        <tr>
+          <%= render partial: 'configuration_items/configuration_item', locals: { configuration_item: configuration_item } %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>

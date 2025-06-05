@@ -1,4 +1,5 @@
 class ConfigurationItem < ApplicationRecord
+  TYPES = %w[Application Database Server]
   STATUSES = %w[Active Retired Maintenance]
   ENVIRONMENTS = %w[Production Staging Development]
 

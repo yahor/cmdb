@@ -13,6 +13,8 @@
 
     <p><%= link_to 'Configuration Items', configuration_items_path, class: "inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm rounded-lg text-gray-700 bg-sky-500 hover:bg-gray-100 transition" %></p>
 
+    <p><%= link_to 'Report', report_path, class: "inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm rounded-lg text-gray-700 bg-sky-500 hover:bg-gray-100 transition" %></p>
+
     <%= link_to 'Log Out', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm rounded-lg text-gray-700 bg-sky-500 hover:bg-gray-100 transition"  %>
   </div>
 </div>
