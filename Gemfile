@@ -45,6 +45,8 @@ gem "thruster", require: false
 gem "cancancan"
 gem "devise", "~> 4.9"
 
+gem "tailwindcss-rails", "~> 4.2"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -56,6 +58,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "rspec-rails", "~> 8.0.0"
   gem "factory_bot_rails"
+  gem "pry"
 end
 
 group :development do
