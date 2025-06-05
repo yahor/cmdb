@@ -13,15 +13,15 @@
 <td class="border border-gray-300 p-4 text-gray-500 dark:border-gray-700 dark:text-gray-400">
   <div>
     <% configuration_item.relationships.each do |relation| %>
-    <%= "It #{relation.using_type} #{relation.connected_item.name}" %><br />
+    <%= "It #{relation.using_type} #{relation.connected_item.name} (#{relation.connected_item.class})" %><br />
     <% end %>
   </div>
 </td>
 <td class="border border-gray-300 p-4 text-gray-500 dark:border-gray-700 dark:text-gray-400">
   <% if can? :edit, ConfigurationItem %>
-    <%= link_to '✎', edit_configuration_item_path(configuration_item), title: 'Edit' %> |
+  <%= link_to '✎', edit_configuration_item_path(configuration_item), title: 'Edit' %> |
   <% end %>
   <% if can? :destroy, ConfigurationItem %>
-    <%= link_to "🗑", configuration_item_path(configuration_item), title: 'Remove', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}  %>
+  <%= link_to "🗑", configuration_item_path(configuration_item), title: 'Remove', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}  %>
   <% end %>
 </td>

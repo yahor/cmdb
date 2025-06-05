@@ -5,7 +5,7 @@
     </div>
     <div class="col-span-5">
       <%= form.select :connected_item_id,
-      options_for_select(ConfigurationItem.order(:name).map{|c| [c.name, c.id]},
+      options_for_select(ConfigurationItem.order(:name).map{|c| ["#{c.name}(#{c.class})", c.id]},
        { selected: form.object.connected_item_id }) %>
     </div>
     <div class="col-span-2 flex items-end">

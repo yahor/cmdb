@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render partial: 'configuration_item', locals: { configuration_item: @configuration_item } %>
+<%= render partial: 'configuration_items', locals: { configuration_items: [@configuration_item] } %>
 
 <div>
   <% if can? :edit, @configuration_item %>
