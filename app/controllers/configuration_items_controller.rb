@@ -50,11 +50,14 @@ class ConfigurationItemsController < ApplicationController
 
   # DELETE /configuration_items/1 or /configuration_items/1.json
   def destroy
-    @configuration_item.destroy!
-
     respond_to do |format|
-      format.html { redirect_to configuration_items_path, status: :see_other, notice: "Configuration item was successfully destroyed." }
-      format.json { head :no_content }
+      if @configuration_item.destroy
+        format.html { redirect_to configuration_items_path, status: :see_other, notice: "Configuration item was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to configuration_items_path, flash: { error: @configuration_item.errors.full_messages.join("\n")  } }
+        format.json { render json: @configuration_item.errors, status: :unprocessable_entity }
+      end
     end
   end
 
