@@ -70,6 +70,6 @@ group :test do
   gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "factory_bot_rails"
-  gem "rspec-rails", "~> 8.0.0"
+  gem "rspec-rails", "~> 8.0.2"
   gem "simplecov", require: false
 end
